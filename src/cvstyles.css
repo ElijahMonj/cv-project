@@ -1,17 +1,20 @@
 .cvPreview{
     background-color: aliceblue;
-    width: 600px;
-    height: 800px;
+    width: 720px;
+    height: 960px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   }
   .avatar{
-    width: 140px;
-
+    width: 120px;
   }
   .basicInfo{
     display: grid;
     grid-template-columns: 160px 1fr;
-    margin: 20px;
-   
+    margin-right: 40px;
+    margin-left: 40px;
+    margin-top: 40px;
+    margin-bottom: 20px;
   }
   .basicInfoDetails{
     display: flex;
@@ -26,5 +29,20 @@
 }
 .phone, .email{
     font-size: 15px;
+}
+.aboutMe{
+  font-size: 25px;
+}
+.personalInfo{
+  margin-right: 40px;
+  margin-left: 40px;
+  word-wrap: break-word;
+}
+.education,.skills,.experience,.certifications{
+  margin-right: 40px;
+  margin-left: 40px;
+}
+.certifications{
+  margin-bottom: 40px;
 }
   
