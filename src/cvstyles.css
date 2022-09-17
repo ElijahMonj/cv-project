@@ -1,0 +1,30 @@
+.cvPreview{
+    background-color: aliceblue;
+    width: 600px;
+    height: 800px;
+  }
+  .avatar{
+    width: 140px;
+
+  }
+  .basicInfo{
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    margin: 20px;
+   
+  }
+  .basicInfoDetails{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+.name{
+    font-size: 40px;
+}
+.jobTitle{
+    font-size: 25px;
+}
+.phone, .email{
+    font-size: 15px;
+}
+  
