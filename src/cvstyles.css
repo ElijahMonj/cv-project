@@ -6,7 +6,7 @@
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   }
   .avatar{
-    width: 120px;
+    width: 140px;
   }
   .basicInfo{
     display: grid;
@@ -21,8 +21,16 @@
     flex-direction: column;
     justify-content: space-between;
   }
-.name{
+#nameFinal{
     font-size: 40px;
+    word-wrap: break-word;
+    width: 480px;
+}
+.phoneEmail{
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  width: 480px;
 }
 .jobTitle{
     font-size: 25px;
