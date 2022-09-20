@@ -29,17 +29,23 @@
 .phoneEmail{
   display: flex;
   flex-direction: row;
-  gap: 50px;
+  gap:20px;
   width: 480px;
 }
 .jobTitle{
     font-size: 25px;
+    width: 480px;
+    word-wrap: break-word;
 }
 .phone, .email{
     font-size: 15px;
 }
 .aboutMe{
   font-size: 25px;
+}
+#personalInfo{
+  width: 640px;
+  word-wrap: break-word;
 }
 .personalInfo{
   margin-right: 40px;

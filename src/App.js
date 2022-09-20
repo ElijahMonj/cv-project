@@ -9,12 +9,35 @@ class App extends Component {
   
   }
 
-  handleChange = (e) => {
+  handleChangeName = (e) => {
     e.preventDefault();
     let name=document.getElementById('name').value;
     
     document.getElementById('nameFinal').textContent = name;
   };
+  handleChangeOccupation = (e) => {
+    e.preventDefault();
+    let occupation=document.getElementById('occupation').value;  
+    document.getElementById('jobTitle').textContent = occupation;
+  };
+  handleChangeinputNumber = (e) => {
+    e.preventDefault();
+    let number=document.getElementById('inputNumber').value;  
+    document.getElementById('phone').textContent = "Phone: "+number;
+  };
+  handleChangeEmail = (e) => {
+    e.preventDefault();
+    let email=document.getElementById('inputEmail').value;  
+    document.getElementById('email').textContent = "E-mail: "+email;
+  };
+  handleChangeAbout = (e) => {
+    e.preventDefault();
+    let me=document.getElementById('inputAboutMe').value;  
+    document.getElementById('personalInfo').textContent = me;
+  };
+
+
+
   render() {
    
 
@@ -25,11 +48,40 @@ class App extends Component {
         <div className='addInfo'>
             <label htmlFor='name'>Name</label>
             <input
-              onChange={this.handleChange}
-              
+              maxLength={24}
+              onChange={this.handleChangeName}   
               type="text"
               id="name"
             />
+            <label htmlFor='occupation'>Occupation:</label>
+            <input
+              maxLength={20}
+              onChange={this.handleChangeOccupation}   
+              type="text"
+              id="occupation"
+            />
+             <label htmlFor='inputNumber'>Phone Number:</label>
+            <input
+              maxLength={15}
+              pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"  
+              onChange={this.handleChangeinputNumber}   
+              type="tel"
+              id="inputNumber"
+            />
+            <label htmlFor='occupation'>E-mail:</label>
+            <input
+              maxLength={25}
+              onChange={this.handleChangeEmail}   
+              type="email"
+              id="inputEmail"
+            /> 
+            <label htmlFor='inputAboutMe'>Make a short summary of you:</label>
+            <textarea
+              maxLength={210}
+              onChange={this.handleChangeAbout}   
+              type="text"
+              id="inputAboutMe"
+            />   
         </div>
         <div className='showInfo'>
         
@@ -38,28 +90,22 @@ class App extends Component {
               <img src={avatar} className="avatar" alt="avatar"/>
               <div className='basicInfoDetails'>
                   <div id='nameFinal'>Sample Name</div>
-                  <div className='jobTitle'>{"Sample Employee"}</div>
-                    <div className='phoneEmail'>
-                      <div className='phone'>Phone : {'1212121212'}</div>
-                      <div className='email'>E-mail: {'sample@gmail.com'}</div>
+                  <div className='jobTitle' id='jobTitle'>Sample Employee</div>
+                    <div className='phoneEmail' id='phoneEmail'>
+                      <div className='phone' id='phone'>Phone : {'1212121212'}</div>
+                      <div className='email' id='email'>E-mail: {'sample@gmail.com'}</div>
                     </div>
               </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-            
+  
             <div className='personalInfo'>
                 <div className='aboutMe'>About Me</div><br></br>
-                {"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."}
-            </div>
+                <div id='personalInfo'></div>
+                </div>
+
+
+
+
             <div className='education'>
                 <div className='aboutMe'>Education</div><br></br>
                 <ul>
