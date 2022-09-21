@@ -59,4 +59,8 @@
 .certifications{
   margin-bottom: 40px;
 }
+.skills ul{
+  display: grid;
+  grid-template-columns: auto auto;
+}
   

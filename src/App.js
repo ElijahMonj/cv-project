@@ -2,12 +2,47 @@ import avatar from './avatar.svg';
 import './App.css';
 import './cvstyles.css';
 import React, { Component } from "react";
+import Overview from "./components/Overview";
+import uniqid from "uniqid";
 class App extends Component {
   constructor() {
     super();
 
-  
+    this.state = {
+      task: {
+        text: '', 
+        id: uniqid()
+      },
+      tasks: [],
+    };
   }
+
+  handleChange = (e) => {
+    this.setState({
+      task: {
+        text: e.target.value,
+        id: this.state.task.id,
+      },
+    });
+  };
+
+  onSubmitTask = (e) => {
+    e.preventDefault();
+    let skills=document.getElementsByClassName("skillsID");
+    console.log(skills);
+    if(skills.length>=9){
+      document.getElementById("skillsBtn").disabled = true;
+    }
+    this.setState({
+      tasks: this.state.tasks.concat(this.state.task),
+      task: {
+        text: '', 
+        id: uniqid()
+      },
+    });
+  };
+  //Skills
+
 
   handleChangeName = (e) => {
     e.preventDefault();
@@ -39,7 +74,7 @@ class App extends Component {
 
 
   render() {
-   
+    const { task, tasks } = this.state;
 
   return (
     <div className='container'>
@@ -81,7 +116,18 @@ class App extends Component {
               onChange={this.handleChangeAbout}   
               type="text"
               id="inputAboutMe"
-            />   
+            />
+            <form onSubmit={this.onSubmitTask}>
+              <label htmlFor="taskInput">Enter task</label>
+              <input
+                onChange={this.handleChange}
+                 maxLength='18'
+                 value={task.text}
+                 type="text"
+                id="taskInput"
+              />
+          <button type="submit" id='skillsBtn'>Add Task</button>
+        </form>   
         </div>
         <div className='showInfo'>
         
@@ -113,16 +159,11 @@ class App extends Component {
                 </ul>
              </div>
              <div className='skills'>
-                <div className='aboutMe'>Skills</div><br></br>
-                <ul>
-                  <li>as</li>
-                  <li>as</li>
-                  <li>as</li>
-                  <li>as</li>
-                </ul>
+                <div className='aboutMe'>Skills</div>
+                <Overview tasks={tasks} />
              </div>
              <div className='experience'>
-                <div className='aboutMe'>Experience</div><br></br>
+                <div className='aboutMe'>Experience</div>
                 <ul>
                   <li>as</li>
                   <li>as</li>
@@ -131,7 +172,7 @@ class App extends Component {
                 </ul>
              </div>
              <div className='certifications'>
-                <div className='aboutMe'>Certifications</div><br></br>
+                <div className='aboutMe'>Certifications</div>
                 <ul>
                   <li>as</li>
                   <li>as</li>
