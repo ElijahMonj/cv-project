@@ -4,6 +4,7 @@ import './cvstyles.css';
 import React, { Component } from "react";
 import Overview from "./components/Overview";
 import Certifications from "./components/Certifications.js";
+import Educations from "./components/Educations";
 import uniqid from "uniqid";
 class App extends Component {
   constructor() {
@@ -20,10 +21,40 @@ class App extends Component {
         id: uniqid()
       },
       certs: [],
+
+      edu: {
+        text: '', 
+        id: uniqid()
+      },
+      edus: [],
     };
 
     
   }
+  //edu
+  handleChangeEdu = (e) => {
+    let school=document.getElementById('eduInputSchool').value;  
+    let year=document.getElementById('eduInputYear').value;  
+    let degree=document.getElementById('eduInputDegree').value;  
+    this.setState({
+      edu: {
+        text: school+" - "+year+" - "+degree,
+        id: this.state.edu.id,
+      },
+    });
+  };
+  onSubmitTaskEdu = (e) => {
+    
+    e.preventDefault();
+    this.setState({
+      edus: this.state.edus.concat(this.state.edu),
+      edu: {
+        text: '', 
+        id: uniqid()
+      },
+    });
+  };
+  //edu
   //cert
   handleChangeCert = (e) => {
     this.setState({
@@ -106,6 +137,7 @@ class App extends Component {
   render() {
     const { task, tasks } = this.state;
     const { cert, certs } = this.state;
+    const { edu, edus } = this.state;
 
   return (
     <div className='container'>
@@ -148,7 +180,34 @@ class App extends Component {
               type="text"
               id="inputAboutMe"
             />
-            
+            <form onSubmit={this.onSubmitTaskEdu}>
+              <div>Enter Education</div>
+              <label htmlFor="eduInput">Enter School</label>
+              <input
+                onChange={this.handleChangeEdu}
+                 maxLength='18'
+                
+                 type="text"
+                id="eduInputSchool"
+              />
+              <label htmlFor="eduInputYear">Enter Year</label>
+              <input
+                onChange={this.handleChangeEdu}
+                 maxLength='18'
+                 
+                 type="number"
+                id="eduInputYear"
+              />
+              <label htmlFor="eduInputDegree">Enter Degree</label>
+              <input
+                onChange={this.handleChangeEdu}
+                 maxLength='18'
+                 
+                 type="text"
+                id="eduInputDegree"
+              />
+              <button type="submit" id='eduBtn'>Add Education</button>
+            </form>   
             <form onSubmit={this.onSubmitTask}>
               <label htmlFor="taskInput">Enter Skills</label>
               <input
@@ -162,13 +221,13 @@ class App extends Component {
             </form>   
 
             <form onSubmit={this.onSubmitTaskCert}>
-              <label htmlFor="taskInput">Enter Certifications</label>
+              <label htmlFor="certInput">Enter Certifications</label>
               <input
                 onChange={this.handleChangeCert}
                  maxLength='18'
                  value={cert.text}
                  type="text"
-                id="taskInput"
+                id="certInput"
               />
               <button type="submit" id='certBtn'>Add Cert</button>
             </form>   
@@ -208,9 +267,7 @@ class App extends Component {
 
             <div className='education'>
                 <div className='aboutMe'>Education</div>
-                <ul>
-                  
-                </ul>
+                <Educations edus={edus} />
              </div>
              <div className='skills'>
                 <div className='aboutMe'>Skills</div>
