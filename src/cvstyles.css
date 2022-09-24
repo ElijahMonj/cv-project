@@ -59,7 +59,7 @@
 .certifications{
   margin-bottom: 40px;
 }
-.skills ul{
+.skills ul,.certifications ul{
   display: grid;
   grid-template-columns: auto auto;
 }

@@ -3,6 +3,7 @@ import './App.css';
 import './cvstyles.css';
 import React, { Component } from "react";
 import Overview from "./components/Overview";
+import Certifications from "./components/Certifications.js";
 import uniqid from "uniqid";
 class App extends Component {
   constructor() {
@@ -14,9 +15,38 @@ class App extends Component {
         id: uniqid()
       },
       tasks: [],
+      cert: {
+        text: '', 
+        id: uniqid()
+      },
+      certs: [],
     };
-  }
 
+    
+  }
+  //cert
+  handleChangeCert = (e) => {
+    this.setState({
+      cert: {
+        text: e.target.value,
+        id: this.state.cert.id,
+      },
+    });
+  };
+
+  onSubmitTaskCert = (e) => {
+    e.preventDefault();
+    this.setState({
+      certs: this.state.certs.concat(this.state.cert),
+      cert: {
+        text: '', 
+        id: uniqid()
+      },
+    });
+  };
+  //cert
+
+  //skills
   handleChange = (e) => {
     this.setState({
       task: {
@@ -25,7 +55,7 @@ class App extends Component {
       },
     });
   };
-
+  
   onSubmitTask = (e) => {
     e.preventDefault();
     let skills=document.getElementsByClassName("skillsID");
@@ -75,6 +105,7 @@ class App extends Component {
 
   render() {
     const { task, tasks } = this.state;
+    const { cert, certs } = this.state;
 
   return (
     <div className='container'>
@@ -117,8 +148,9 @@ class App extends Component {
               type="text"
               id="inputAboutMe"
             />
+            
             <form onSubmit={this.onSubmitTask}>
-              <label htmlFor="taskInput">Enter task</label>
+              <label htmlFor="taskInput">Enter Skills</label>
               <input
                 onChange={this.handleChange}
                  maxLength='18'
@@ -126,9 +158,31 @@ class App extends Component {
                  type="text"
                 id="taskInput"
               />
-          <button type="submit" id='skillsBtn'>Add Task</button>
-        </form>   
+              <button type="submit" id='skillsBtn'>Add Skills</button>
+            </form>   
+
+            <form onSubmit={this.onSubmitTaskCert}>
+              <label htmlFor="taskInput">Enter Certifications</label>
+              <input
+                onChange={this.handleChangeCert}
+                 maxLength='18'
+                 value={cert.text}
+                 type="text"
+                id="taskInput"
+              />
+              <button type="submit" id='certBtn'>Add Cert</button>
+            </form>   
+        
         </div>
+
+
+
+
+
+
+
+
+
         <div className='showInfo'>
         
           <div className='cvPreview'>
@@ -145,7 +199,7 @@ class App extends Component {
             </div>
   
             <div className='personalInfo'>
-                <div className='aboutMe'>About Me</div><br></br>
+                <div className='aboutMe'>About Me</div>
                 <div id='personalInfo'></div>
                 </div>
 
@@ -153,7 +207,7 @@ class App extends Component {
 
 
             <div className='education'>
-                <div className='aboutMe'>Education</div><br></br>
+                <div className='aboutMe'>Education</div>
                 <ul>
                   
                 </ul>
@@ -173,12 +227,7 @@ class App extends Component {
              </div>
              <div className='certifications'>
                 <div className='aboutMe'>Certifications</div>
-                <ul>
-                  <li>as</li>
-                  <li>as</li>
-                  <li>as</li>
-                  <li>as</li>
-                </ul>
+                <Certifications certs={certs} />
              </div>
             
           </div>
