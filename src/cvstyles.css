@@ -45,6 +45,7 @@
 }
 #personalInfo{
   width: 640px;
+  text-indent: 40px;
   word-wrap: break-word;
 }
 .personalInfo{

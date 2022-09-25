@@ -5,6 +5,7 @@ import React, { Component } from "react";
 import Overview from "./components/Overview";
 import Certifications from "./components/Certifications.js";
 import Educations from "./components/Educations";
+import Experience from "./components/Experience";
 import uniqid from "uniqid";
 class App extends Component {
   constructor() {
@@ -27,10 +28,37 @@ class App extends Component {
         id: uniqid()
       },
       edus: [],
+
+      exp: {
+        text: '', 
+        id: uniqid()
+      },
+      exps: [],
     };
 
     
   }
+  //experience
+  handleChangeExp = (e) => {
+    this.setState({
+      exp: {
+        text: e.target.value,
+        id: this.state.exp.id,
+      },
+    });
+  };
+
+  onSubmitExp = (e) => {
+    e.preventDefault();
+    this.setState({
+      exps: this.state.exps.concat(this.state.exp),
+      exp: {
+        text: '', 
+        id: uniqid()
+      },
+    });
+  };
+  //experience
   //edu
   handleChangeEdu = (e) => {
     let school=document.getElementById('eduInputSchool').value;  
@@ -138,6 +166,7 @@ class App extends Component {
     const { task, tasks } = this.state;
     const { cert, certs } = this.state;
     const { edu, edus } = this.state;
+    const { exp, exps } = this.state;
 
   return (
     <div className='container'>
@@ -146,14 +175,14 @@ class App extends Component {
         <div className='addInfo'>
             <label htmlFor='name'>Name</label>
             <input
-              maxLength={24}
+              maxLength={41}
               onChange={this.handleChangeName}   
               type="text"
               id="name"
             />
             <label htmlFor='occupation'>Occupation:</label>
             <input
-              maxLength={20}
+              maxLength={30}
               onChange={this.handleChangeOccupation}   
               type="text"
               id="occupation"
@@ -168,14 +197,14 @@ class App extends Component {
             />
             <label htmlFor='occupation'>E-mail:</label>
             <input
-              maxLength={25}
+              maxLength={37}
               onChange={this.handleChangeEmail}   
               type="email"
               id="inputEmail"
             /> 
             <label htmlFor='inputAboutMe'>Make a short summary of you:</label>
             <textarea
-              maxLength={210}
+              maxLength={300  }
               onChange={this.handleChangeAbout}   
               type="text"
               id="inputAboutMe"
@@ -186,7 +215,7 @@ class App extends Component {
               <input
                 onChange={this.handleChangeEdu}
                  maxLength='18'
-                
+                required
                  type="text"
                 id="eduInputSchool"
               />
@@ -194,15 +223,15 @@ class App extends Component {
               <input
                 onChange={this.handleChangeEdu}
                  maxLength='18'
-                 
-                 type="number"
+                 required
+                 type="text"
                 id="eduInputYear"
               />
               <label htmlFor="eduInputDegree">Enter Degree</label>
               <input
                 onChange={this.handleChangeEdu}
                  maxLength='18'
-                 
+                 required
                  type="text"
                 id="eduInputDegree"
               />
@@ -218,7 +247,18 @@ class App extends Component {
                 id="taskInput"
               />
               <button type="submit" id='skillsBtn'>Add Skills</button>
-            </form>   
+            </form>  
+
+            <form onSubmit={this.onSubmitExp}>
+              <label htmlFor="expInput">Enter Experience</label>
+              <input
+              onChange={this.handleChangeExp}
+              value={exp.text}
+              type="text"
+              id="expInput"
+              />
+              <button type="submit">Add Experience</button>
+            </form> 
 
             <form onSubmit={this.onSubmitTaskCert}>
               <label htmlFor="certInput">Enter Certifications</label>
@@ -258,7 +298,7 @@ class App extends Component {
             </div>
   
             <div className='personalInfo'>
-                <div className='aboutMe'>About Me</div>
+                <div className='aboutMe'>About Me</div><br></br>
                 <div id='personalInfo'></div>
                 </div>
 
@@ -275,12 +315,7 @@ class App extends Component {
              </div>
              <div className='experience'>
                 <div className='aboutMe'>Experience</div>
-                <ul>
-                  <li>as</li>
-                  <li>as</li>
-                  <li>as</li>
-                  <li>as</li>
-                </ul>
+                <Experience exps={exps} />
              </div>
              <div className='certifications'>
                 <div className='aboutMe'>Certifications</div>
