@@ -1,6 +1,7 @@
 import avatar from './avatar.svg';
 import './App.css';
 import './cvstyles.css';
+import './fieldStyle.css';
 import React, { Component } from "react";
 import Overview from "./components/Overview";
 import Certifications from "./components/Certifications.js";
@@ -57,6 +58,9 @@ class App extends Component {
         id: uniqid()
       },
     });
+    if(this.state.exps.length===5){
+      document.getElementById("addExpBtn").disabled = true;
+    }
   };
   //experience
   //edu
@@ -81,6 +85,12 @@ class App extends Component {
         id: uniqid()
       },
     });
+    document.getElementById('eduInputSchool').value="";  
+    document.getElementById('eduInputYear').value="";  
+    document.getElementById('eduInputDegree').value="";  
+    if(this.state.edus.length===5){
+      document.getElementById("eduBtn").disabled = true;
+    }
   };
   //edu
   //cert
@@ -102,6 +112,9 @@ class App extends Component {
         id: uniqid()
       },
     });
+    if(this.state.certs.length===7){
+      document.getElementById("certBtn").disabled = true;
+    }
   };
   //cert
 
@@ -117,9 +130,8 @@ class App extends Component {
   
   onSubmitTask = (e) => {
     e.preventDefault();
-    let skills=document.getElementsByClassName("skillsID");
-    console.log(skills);
-    if(skills.length>=9){
+    
+    if(this.state.tasks.length===9){
       document.getElementById("skillsBtn").disabled = true;
     }
     this.setState({
@@ -131,7 +143,7 @@ class App extends Component {
     });
   };
   //Skills
-
+  
 
   handleChangeName = (e) => {
     e.preventDefault();
@@ -160,7 +172,63 @@ class App extends Component {
     document.getElementById('personalInfo').textContent = me;
   };
 
-
+  //deleting
+  skillsDelete = (e) => {
+    e.preventDefault();
+    var array=this.state.tasks;
+    array.pop();
+    console.log(array);
+    this.setState({
+      tasks: array,
+      task: {
+        text: '', 
+        id: uniqid()
+      },
+    });
+    document.getElementById("skillsBtn").disabled = false;
+  };
+  expDelete = (e) => {
+    e.preventDefault();
+    var array=this.state.exps;
+    array.pop();
+    console.log(array);
+    this.setState({
+      exps: array,
+      exp: {
+        text: '', 
+        id: uniqid()
+      },
+    });
+    document.getElementById("addExpBtn").disabled = false;
+  };
+  certDelete = (e) => {
+    e.preventDefault();
+    var array=this.state.certs;
+    array.pop();
+    console.log(array);
+    this.setState({
+      certs: array,
+      cert: {
+        text: '', 
+        id: uniqid()
+      },
+    });
+    document.getElementById("certBtn").disabled = false;
+  };
+  edusDelete = (e) => {
+    e.preventDefault();
+    var array=this.state.edus;
+    array.pop();
+    console.log(array);
+    this.setState({
+      edus: array,
+      edu: {
+        text: '', 
+        id: uniqid()
+      },
+    });
+    document.getElementById("eduBtn").disabled = false;
+  };
 
   render() {
     const { task, tasks } = this.state;
@@ -219,14 +287,7 @@ class App extends Component {
                  type="text"
                 id="eduInputSchool"
               />
-              <label htmlFor="eduInputYear">Enter Year</label>
-              <input
-                onChange={this.handleChangeEdu}
-                 maxLength='18'
-                 required
-                 type="text"
-                id="eduInputYear"
-              />
+             
               <label htmlFor="eduInputDegree">Enter Degree</label>
               <input
                 onChange={this.handleChangeEdu}
@@ -235,7 +296,16 @@ class App extends Component {
                  type="text"
                 id="eduInputDegree"
               />
+               <label htmlFor="eduInputYear">Enter Year</label>
+              <input
+                onChange={this.handleChangeEdu}
+                 maxLength='18'
+                 required
+                 type="text"
+                id="eduInputYear"
+              />
               <button type="submit" id='eduBtn'>Add Education</button>
+              <button type="button" id='delEduBtn' onClick={this.edusDelete}>Delete Education</button>
             </form>   
             <form onSubmit={this.onSubmitTask}>
               <label htmlFor="taskInput">Enter Skills</label>
@@ -247,6 +317,7 @@ class App extends Component {
                 id="taskInput"
               />
               <button type="submit" id='skillsBtn'>Add Skills</button>
+              <button type="button" id='delSkillsBtn' onClick={this.skillsDelete}>Delete Skills</button>
             </form>  
 
             <form onSubmit={this.onSubmitExp}>
@@ -257,7 +328,8 @@ class App extends Component {
               type="text"
               id="expInput"
               />
-              <button type="submit">Add Experience</button>
+              <button type="submit" id='addExpBtn'>Add Experience</button>
+              <button type="button" id='delExpBtn' onClick={this.expDelete}>Delete Experience</button>
             </form> 
 
             <form onSubmit={this.onSubmitTaskCert}>
@@ -270,6 +342,7 @@ class App extends Component {
                 id="certInput"
               />
               <button type="submit" id='certBtn'>Add Cert</button>
+              <button type="button" id='delCertBtn' onClick={this.certDelete}>Delete Certificate</button>
             </form>   
         
         </div>
