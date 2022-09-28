@@ -1,3 +1,61 @@
 .addInfo{
-
+ display: flex;
+ flex-direction: column;
+ justify-content: space-around;   
 }
+.addInfo > *{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+input,textarea {
+    font-size: 1em;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    
+  }
+.PE{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#inputNumber{
+    width: 25%;
+  }
+  #inputEmail{
+    width: 40%;
+  }
+  textarea{
+      height: 80px;
+      resize: none;
+  }
+.formEducation, form{
+display: flex;
+flex-direction: column;
+}
+.formEducation .buttons{
+    align-self: center;
+}
+.buttons{
+  display: flex;
+  gap: 20px;
+    
+}
+.buttons > label{
+    display: flex;
+    align-self: center;
+}
+.buttons button{
+    padding: 12px 20px;
+    border-radius: 4px;
+    border: none;
+    height: 40px;
+    margin: 8px 0;
+    width: 180px;
+    font-size: 0.95em;
+}
+
+  

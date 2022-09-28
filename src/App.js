@@ -70,7 +70,7 @@ class App extends Component {
     let degree=document.getElementById('eduInputDegree').value;  
     this.setState({
       edu: {
-        text: school+" - "+year+" - "+degree,
+        text: school+" - "+degree+" - "+year,
         id: this.state.edu.id,
       },
     });
@@ -254,7 +254,7 @@ class App extends Component {
               onChange={this.handleChangeOccupation}   
               type="text"
               id="occupation"
-            />
+            /> <div className='PE'>
              <label htmlFor='inputNumber'>Phone Number:</label>
             <input
               maxLength={15}
@@ -269,20 +269,20 @@ class App extends Component {
               onChange={this.handleChangeEmail}   
               type="email"
               id="inputEmail"
-            /> 
+            /> </div>
             <label htmlFor='inputAboutMe'>Make a short summary of you:</label>
             <textarea
-              maxLength={300  }
+              maxLength={300}
               onChange={this.handleChangeAbout}   
               type="text"
               id="inputAboutMe"
             />
-            <form onSubmit={this.onSubmitTaskEdu}>
-              <div>Enter Education</div>
+            <form onSubmit={this.onSubmitTaskEdu} className="formEducation">
+              <div>Enter Education</div><br></br>
               <label htmlFor="eduInput">Enter School</label>
               <input
                 onChange={this.handleChangeEdu}
-                 maxLength='18'
+                 maxLength='35'
                 required
                  type="text"
                 id="eduInputSchool"
@@ -291,7 +291,7 @@ class App extends Component {
               <label htmlFor="eduInputDegree">Enter Degree</label>
               <input
                 onChange={this.handleChangeEdu}
-                 maxLength='18'
+                 maxLength='50'
                  required
                  type="text"
                 id="eduInputDegree"
@@ -299,16 +299,18 @@ class App extends Component {
                <label htmlFor="eduInputYear">Enter Year</label>
               <input
                 onChange={this.handleChangeEdu}
-                 maxLength='18'
+                 maxLength='10'
                  required
                  type="text"
                 id="eduInputYear"
-              />
+              /> <div className='buttons'>
               <button type="submit" id='eduBtn'>Add Education</button>
               <button type="button" id='delEduBtn' onClick={this.edusDelete}>Delete Education</button>
+              </div>
             </form>   
             <form onSubmit={this.onSubmitTask}>
-              <label htmlFor="taskInput">Enter Skills</label>
+            <div className='buttons'>
+              <label htmlFor="taskInput">Enter Skills &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
               <input
                 onChange={this.handleChange}
                  maxLength='18'
@@ -317,11 +319,12 @@ class App extends Component {
                 id="taskInput"
               />
               <button type="submit" id='skillsBtn'>Add Skills</button>
-              <button type="button" id='delSkillsBtn' onClick={this.skillsDelete}>Delete Skills</button>
+              <button type="button" id='delSkillsBtn' onClick={this.skillsDelete}>Delete Skills</button></div>
             </form>  
 
             <form onSubmit={this.onSubmitExp}>
-              <label htmlFor="expInput">Enter Experience</label>
+            <div className='buttons'>
+              <label htmlFor="expInput">Enter Experiences&nbsp;&nbsp;&nbsp;</label>
               <input
               onChange={this.handleChangeExp}
               value={exp.text}
@@ -329,10 +332,12 @@ class App extends Component {
               id="expInput"
               />
               <button type="submit" id='addExpBtn'>Add Experience</button>
-              <button type="button" id='delExpBtn' onClick={this.expDelete}>Delete Experience</button>
+              <button type="button" id='delExpBtn' onClick={this.expDelete}>Delete Experience</button></div>
             </form> 
 
             <form onSubmit={this.onSubmitTaskCert}>
+              
+              <div className='buttons'>
               <label htmlFor="certInput">Enter Certifications</label>
               <input
                 onChange={this.handleChangeCert}
@@ -342,7 +347,7 @@ class App extends Component {
                 id="certInput"
               />
               <button type="submit" id='certBtn'>Add Cert</button>
-              <button type="button" id='delCertBtn' onClick={this.certDelete}>Delete Certificate</button>
+              <button type="button" id='delCertBtn' onClick={this.certDelete}>Delete Certificate</button></div>
             </form>   
         
         </div>
