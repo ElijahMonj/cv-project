@@ -1,4 +1,27 @@
 .container{
+
+}
+button{
+  background-color: #EEEEEE;
+}
+button:hover{
+background-color: #476072;
+cursor: pointer;
+color: #EEEEEE;
+}
+textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {   
+  border-color: #334257;
+  box-shadow: 0 1px 1px rgba(84, 140, 168, 0.075);
+  outline: 0 none;
+}
+header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  font-size: 45px;
+  background-color: #334257;
+  color: #EEEEEE;
   
 }
 input::-webkit-outer-spin-button,
@@ -16,16 +39,30 @@ input[type=number]{
   height: 100vh;
 }
 .addInfo{
-  background-color: blueviolet;
-  flex: 1 1 0px
-
+  background-color: #548CA8;
+  flex: 1 1 0px;
+  
 }
 .showInfo{
-  background-color: brown;
+  background-color: #548CA8;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 1 1 0px
-
+  flex: 1 1 0px;
+  flex-direction: column;
+  
 }
-
+footer {
+  background-color: #334257;
+  color: #EEEEEE;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+}
+footer img{
+  height: 25px;
+}

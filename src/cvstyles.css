@@ -1,12 +1,14 @@
 .cvPreview{
-    background-color: aliceblue;
+    background-color: white;
     width: 720px;
     height: 960px;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin: 40px;
   }
   .avatar{
     width: 140px;
+    height: 140px;
   }
   .basicInfo{
     display: grid;

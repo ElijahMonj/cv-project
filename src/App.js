@@ -1,4 +1,5 @@
 import avatar from './avatar.svg';
+import github from './GitHub-Mark-Light-120px-plus.png'
 import './App.css';
 import './cvstyles.css';
 import './fieldStyle.css';
@@ -316,6 +317,7 @@ class App extends Component {
                  maxLength='18'
                  value={task.text}
                  type="text"
+                 required
                 id="taskInput"
               />
               <button type="submit" id='skillsBtn'>Add Skills</button>
@@ -329,6 +331,7 @@ class App extends Component {
               onChange={this.handleChangeExp}
               value={exp.text}
               type="text"
+              required
               id="expInput"
               />
               <button type="submit" id='addExpBtn'>Add Experience</button>
@@ -345,10 +348,14 @@ class App extends Component {
                  value={cert.text}
                  type="text"
                 id="certInput"
+                required
               />
               <button type="submit" id='certBtn'>Add Cert</button>
               <button type="button" id='delCertBtn' onClick={this.certDelete}>Delete Certificate</button></div>
-            </form>   
+            </form>
+            <br></br>
+            <br></br>
+            <br></br>   
         
         </div>
 
@@ -401,8 +408,12 @@ class App extends Component {
              </div>
             
           </div>
+          <button className=''>Export</button>
+          <br></br><br></br><br></br><br></br>
         </div>
+        
       </div>
+      <footer>Copyrights 2022 @ElijahMonj&nbsp;&nbsp;<a href='#'><img src={github}></img></a></footer>
     </div>
   );
   }
