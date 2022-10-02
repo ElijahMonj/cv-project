@@ -9,6 +9,8 @@
   .avatar{
     width: 140px;
     height: 140px;
+    object-fit: cover;
+    cursor: pointer;
   }
   .basicInfo{
     display: grid;

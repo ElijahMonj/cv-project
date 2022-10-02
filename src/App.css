@@ -1,6 +1,9 @@
 .container{
 
 }
+#file{
+  display: none;
+}
 button{
   background-color: #EEEEEE;
 }

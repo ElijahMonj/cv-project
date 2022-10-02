@@ -9,7 +9,9 @@ import Certifications from "./components/Certifications.js";
 import Educations from "./components/Educations";
 import Experience from "./components/Experience";
 import uniqid from "uniqid";
+
 class App extends Component {
+  
   constructor() {
     super();
 
@@ -230,6 +232,16 @@ class App extends Component {
     });
     document.getElementById("eduBtn").disabled = false;
   };
+  uploadImage = (e) => {
+   
+   var image = document.getElementById('output');
+  image.src = URL.createObjectURL(e.target.files[0]);
+  };
+  imageClicked = (e) => {
+    
+    document.getElementById('file').click();
+   };
+  
 
   render() {
     const { task, tasks } = this.state;
@@ -239,10 +251,12 @@ class App extends Component {
 
   return (
     <div className='container'>
+    
       <header>Make your CV</header>
       <div className='content'>
         <div className='addInfo'>
             <label htmlFor='name'>Name</label>
+            <input type="file" accept="image/*" name="image" id="file"  onChange={this.uploadImage}></input>
             <input
               maxLength={41}
               onChange={this.handleChangeName}   
@@ -371,7 +385,7 @@ class App extends Component {
         
           <div className='cvPreview'>
             <div className='basicInfo'>
-              <img src={avatar} className="avatar" alt="avatar"/>
+              <img src={avatar} className="avatar" alt="avatar" id='output' onClick={this.imageClicked}/>
               <div className='basicInfoDetails'>
                   <div id='nameFinal'>Sample Name</div>
                   <div className='jobTitle' id='jobTitle'>Sample Employee</div>
@@ -413,7 +427,8 @@ class App extends Component {
         </div>
         
       </div>
-      <footer>Copyrights 2022 @ElijahMonj&nbsp;&nbsp;<a href='https://github.com/ElijahMonj/cv-project'><img src={github}></img></a></footer>
+      <footer>
+      Copyrights 2022 @ElijahMonj&nbsp;&nbsp;<a href='https://github.com/ElijahMonj/cv-project'><img src={github}></img></a></footer>
     </div>
   );
   }
