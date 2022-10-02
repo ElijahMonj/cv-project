@@ -413,7 +413,7 @@ class App extends Component {
         </div>
         
       </div>
-      <footer>Copyrights 2022 @ElijahMonj&nbsp;&nbsp;<a href='#'><img src={github}></img></a></footer>
+      <footer>Copyrights 2022 @ElijahMonj&nbsp;&nbsp;<a href='https://github.com/ElijahMonj/Restaurant-Page'><img src={github}></img></a></footer>
     </div>
   );
   }
